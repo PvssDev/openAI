@@ -1,5 +1,5 @@
-# Documentação interna de contexto da atividade
-docs/
+# Documentos locais gerados por entrega/implementação
+docs/local/
 
 # Configurações locais de agentes
 .agents/
