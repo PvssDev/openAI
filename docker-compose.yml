@@ -1,0 +1,74 @@
+services:
+  k8s-api:
+    image: python:3.12-alpine
+    container_name: sim-k8s-api
+    command: python -u /app/server.py
+    volumes:
+      - ./services/k8s_api:/app:ro
+    environment:
+      PORT: "8000"
+      MAX_WORKERS: "4"
+      MAX_QUEUE: "8"
+      HEAVY_OP_DELAY_MS: "1500"
+    networks:
+      - openai-sim-net
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/healthz', timeout=2)"]
+      interval: 3s
+      timeout: 2s
+      retries: 5
+
+  dns-resolver:
+    image: python:3.12-alpine
+    container_name: sim-dns-resolver
+    command: python -u /app/server.py
+    volumes:
+      - ./services/dns_resolver:/app:ro
+    environment:
+      PORT: "8053"
+      K8S_API_URL: "http://k8s-api:8000/endpoints/inference"
+      DNS_TTL_SECONDS: "12"
+      UPSTREAM_TIMEOUT_S: "1.5"
+    depends_on:
+      k8s-api:
+        condition: service_healthy
+    networks:
+      - openai-sim-net
+
+  telemetry-agent:
+    image: python:3.12-alpine
+    container_name: sim-telemetry-agent
+    command: python -u /app/agent.py
+    volumes:
+      - ./services/telemetry_agent:/app:ro
+    environment:
+      TARGET_URL: "http://k8s-api:8000/telemetry/cluster-metrics"
+      WARMUP_SECONDS: "10"
+      CONCURRENCY: "10"
+      REQUEST_TIMEOUT_S: "5.0"
+      BACKOFF_JITTER: "false"
+    depends_on:
+      k8s-api:
+        condition: service_healthy
+    networks:
+      - openai-sim-net
+
+  workload-client:
+    image: python:3.12-alpine
+    container_name: sim-workload-client
+    command: python -u /app/client.py
+    volumes:
+      - ./services/workload_client:/app:ro
+    environment:
+      DNS_URL: "http://dns-resolver:8053/resolve?name=inference.svc.cluster.local"
+      INTERVAL_MS: "500"
+      REQUEST_TIMEOUT_S: "2.0"
+    depends_on:
+      - dns-resolver
+    networks:
+      - openai-sim-net
+
+networks:
+  openai-sim-net:
+    driver: bridge
+
