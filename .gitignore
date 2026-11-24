@@ -1,0 +1,6 @@
+# Documentação interna de contexto da atividade
+docs/
+
+# Configurações locais de agentes
+.agents/
+
