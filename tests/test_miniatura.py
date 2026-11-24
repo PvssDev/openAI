@@ -125,6 +125,51 @@ class TestMiniaturaFlow(unittest.TestCase):
                 time.sleep(0.3)
         self.assertTrue(recovered, "dns-resolver did not recover after stopping telemetry-agent")
 
+    def test_mitigation_serve_stale_prevents_dns_outage(self):
+        # Start a second dns-resolver instance with SERVE_STALE=true
+        mitigated_dns_port = 18054
+        dns_env = os.environ.copy()
+        dns_env.update({
+            "PORT": str(mitigated_dns_port),
+            "K8S_API_URL": f"http://127.0.0.1:{self.api_port}/endpoints/inference",
+            "DNS_TTL_SECONDS": "2",
+            "UPSTREAM_TIMEOUT_S": "1.0",
+            "SERVE_STALE": "true",
+        })
+        mitigated_dns = subprocess.Popen(
+            [sys.executable, "-u", str(ROOT / "services" / "dns_resolver" / "server.py")],
+            env=dns_env,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+        )
+        self.procs.append(mitigated_dns)
+        url = f"http://127.0.0.1:{mitigated_dns_port}/resolve?name=inference.svc.cluster.local"
+        wait_http_ok(url)
+
+        # Saturate k8s-api aggressively
+        tel_env = os.environ.copy()
+        tel_env.update({
+            "TARGET_URL": f"http://127.0.0.1:{self.api_port}/telemetry/cluster-metrics",
+            "WARMUP_SECONDS": "0",
+            "CONCURRENCY": "8",
+            "REQUEST_TIMEOUT_S": "3.0",
+        })
+        tel_proc = subprocess.Popen(
+            [sys.executable, "-u", str(ROOT / "services" / "telemetry_agent" / "agent.py")],
+            env=tel_env,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+        )
+        self.procs.append(tel_proc)
+
+        # Wait for TTL (2s) to expire while k8s-api is saturated
+        time.sleep(2.5)
+        with urllib.request.urlopen(url, timeout=2.0) as resp:
+            status = resp.status
+            data = json.loads(resp.read().decode("utf-8"))
+        self.assertEqual(status, 200)
+        self.assertIn(data["source"], ("stale-cache", "k8s-api"))
+
 
 if __name__ == "__main__":
     unittest.main()
