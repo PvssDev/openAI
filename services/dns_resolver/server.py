@@ -12,6 +12,7 @@ PORT = int(os.getenv("PORT", "8053"))
 K8S_API_URL = os.getenv("K8S_API_URL", "http://k8s-api:8000/endpoints/inference")
 DNS_TTL_SECONDS = float(os.getenv("DNS_TTL_SECONDS", "12"))
 UPSTREAM_TIMEOUT_S = float(os.getenv("UPSTREAM_TIMEOUT_S", "1.5"))
+SERVE_STALE = os.getenv("SERVE_STALE", "false").lower() == "true"
 
 cache_lock = threading.Lock()
 dns_cache = {}
@@ -58,12 +59,24 @@ class DnsHandler(BaseHTTPRequestHandler):
                 print(f"[{ts()}] dns-resolver CACHE_REFRESH name={name} ip={ip} ttl={DNS_TTL_SECONDS}s", flush=True)
                 self._send_json(200, {"name": name, "ip": ip, "source": "k8s-api", "ttl_left_s": DNS_TTL_SECONDS})
         except Exception as exc:
+            with cache_lock:
+                stale_entry = dns_cache.get(name)
+            if SERVE_STALE and stale_entry:
+                print(
+                    f"[{ts()}] dns-resolver SERVE_STALE name={name} ip={stale_entry['ip']} reason={exc}",
+                    flush=True,
+                )
+                self._send_json(
+                    200,
+                    {"name": name, "ip": stale_entry["ip"], "source": "stale-cache", "ttl_left_s": 0},
+                )
+                return
             print(f"[{ts()}] dns-resolver SERVFAIL name={name} reason={exc}", flush=True)
             self._send_json(503, {"name": name, "error": "SERVFAIL", "detail": str(exc)})
 
 
 if __name__ == "__main__":
     server = ThreadingHTTPServer(("0.0.0.0", PORT), DnsHandler)
-    print(f"[{ts()}] dns-resolver started port={PORT} ttl={DNS_TTL_SECONDS}s", flush=True)
+    print(f"[{ts()}] dns-resolver started port={PORT} ttl={DNS_TTL_SECONDS}s serve_stale={SERVE_STALE}", flush=True)
     server.serve_forever()
 

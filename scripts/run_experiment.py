@@ -88,6 +88,11 @@ def main():
     failure_window_s = int(sys.argv[2]) if len(sys.argv) > 2 else 36
     recovery_window_s = int(sys.argv[3]) if len(sys.argv) > 3 else 15
 
+    use_mitigation = prefix == "com-mitigacao" or "--mitigado" in sys.argv
+    compose_cmd = ["docker", "compose", "-f", "docker-compose.yml"]
+    if use_mitigation:
+        compose_cmd += ["-f", "docker-compose.mitigado.yml"]
+
     LOGS_DIR.mkdir(exist_ok=True)
 
     check = run_cmd(["docker", "info"], capture=True)
@@ -96,36 +101,36 @@ def main():
         sys.exit(1)
 
     print(f"[{ts()}] Limpando execucao anterior...")
-    run_cmd(["docker", "compose", "down", "--remove-orphans"])
+    run_cmd(compose_cmd + ["down", "--remove-orphans"])
 
-    print(f"[{ts()}] Subindo miniatura com docker compose up -d...")
-    up = run_cmd(["docker", "compose", "up", "-d"])
+    print(f"[{ts()}] Subindo miniatura ({'COM mitigacao' if use_mitigation else 'SEM mitigacao'})...")
+    up = run_cmd(compose_cmd + ["up", "-d"])
     if up.returncode != 0:
         sys.exit(up.returncode)
 
     try:
-        print(f"[{ts()}] Aguardando {failure_window_s}s (warmup + mascaramento por cache + falha em cascata)...")
+        print(f"[{ts()}] Aguardando {failure_window_s}s (warmup + mascaramento por cache + janela de carga)...")
         time.sleep(failure_window_s)
 
         rollback_ts = ts()
-        print(f"[{rollback_ts}] Executando rollback simulado: docker compose stop telemetry-agent")
-        run_cmd(["docker", "compose", "stop", "telemetry-agent"])
+        print(f"[{rollback_ts}] Executando rollback simulado: stop telemetry-agent")
+        run_cmd(compose_cmd + ["stop", "telemetry-agent"])
 
         print(f"[{ts()}] Aguardando {recovery_window_s}s para observar recuperacao...")
         time.sleep(recovery_window_s)
 
         print(f"[{ts()}] Coletando logs brutos em logs/{prefix}-*.log...")
-        all_logs = run_cmd(["docker", "compose", "logs", "--no-color"], capture=True)
+        all_logs = run_cmd(compose_cmd + ["logs", "--no-color"], capture=True)
         (LOGS_DIR / f"{prefix}-all.log").write_text(all_logs.stdout, encoding="utf-8")
 
         for svc in ["k8s-api", "dns-resolver", "telemetry-agent", "workload-client"]:
-            res = run_cmd(["docker", "compose", "logs", "--no-color", svc], capture=True)
+            res = run_cmd(compose_cmd + ["logs", "--no-color", svc], capture=True)
             (LOGS_DIR / f"{prefix}-{svc}.log").write_text(res.stdout, encoding="utf-8")
 
         parse_metrics(prefix, None, rollback_ts)
     finally:
         print(f"[{ts()}] Encerrando containers (docker compose down)...")
-        run_cmd(["docker", "compose", "down"])
+        run_cmd(compose_cmd + ["down"])
 
 
 if __name__ == "__main__":

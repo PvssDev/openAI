@@ -1,0 +1,13 @@
+# Override para executar a miniatura COM mitigação (Entrega 4)
+# Uso: docker compose -f docker-compose.yml -f docker-compose.mitigado.yml up -d
+services:
+  dns-resolver:
+    environment:
+      SERVE_STALE: "true"
+
+  telemetry-agent:
+    environment:
+      BACKOFF_JITTER: "true"
+      BASE_BACKOFF_S: "0.5"
+      MAX_BACKOFF_S: "8.0"
+
