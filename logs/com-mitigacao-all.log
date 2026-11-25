@@ -1,0 +1,128 @@
+sim-dns-resolver     | [2026-11-25T11:53:19.987117+00:00] dns-resolver started port=8053 ttl=12.0s serve_stale=True
+sim-k8s-api          | [2026-11-25T11:53:16.342969+00:00] k8s-api started port=8000 max_workers=4 max_queue=8
+sim-telemetry-agent  | [2026-11-25T11:53:19.884078+00:00] telemetry-agent waiting warmup=10.0s backoff_jitter=True
+sim-dns-resolver     | [2026-11-25T11:53:20.166113+00:00] dns-resolver CACHE_REFRESH name=inference.svc.cluster.local ip=10.0.0.42 ttl=12.0s
+sim-dns-resolver     | [2026-11-25T11:53:33.218645+00:00] dns-resolver CACHE_REFRESH name=inference.svc.cluster.local ip=10.0.0.42 ttl=12.0s
+sim-telemetry-agent  | [2026-11-25T11:53:29.884410+00:00] telemetry-agent STARTING flood concurrency=10 target=http://k8s-api:8000/telemetry/cluster-metrics backoff_jitter=True
+sim-workload-client  | [2026-11-25T11:53:20.111639+00:00] workload-client started dns_url=http://dns-resolver:8053/resolve?name=inference.svc.cluster.local interval=0.5s
+sim-k8s-api          | [2026-11-25T11:53:31.059072+00:00] k8s-api 503 TIMEOUT_QUEUE path=/telemetry/cluster-metrics
+sim-k8s-api          | [2026-11-25T11:53:31.059656+00:00] k8s-api 503 TIMEOUT_QUEUE path=/telemetry/cluster-metrics
+sim-k8s-api          | [2026-11-25T11:53:31.061040+00:00] k8s-api 503 TIMEOUT_QUEUE path=/telemetry/cluster-metrics
+sim-workload-client  | [2026-11-25T11:53:20.166768+00:00] t=0.0s req=1 status=200 source=k8s-api ttl_left=12.0s latency_ms=55.0 errors=0
+sim-dns-resolver     | [2026-11-25T11:53:49.032590+00:00] dns-resolver SERVE_STALE name=inference.svc.cluster.local ip=10.0.0.42 reason=HTTP Error 503: Service Unavailable
+sim-workload-client  | [2026-11-25T11:53:20.669100+00:00] t=0.56s req=2 status=200 source=cache ttl_left=11.5s latency_ms=2.1 errors=0
+sim-k8s-api          | [2026-11-25T11:53:31.061374+00:00] k8s-api 503 TIMEOUT_QUEUE path=/telemetry/cluster-metrics
+sim-workload-client  | [2026-11-25T11:53:21.170991+00:00] t=1.06s req=3 status=200 source=cache ttl_left=11.0s latency_ms=1.7 errors=0
+sim-k8s-api          | [2026-11-25T11:53:31.062200+00:00] k8s-api 503 TIMEOUT_QUEUE path=/telemetry/cluster-metrics
+sim-dns-resolver     | [2026-11-25T11:53:50.540414+00:00] dns-resolver SERVE_STALE name=inference.svc.cluster.local ip=10.0.0.42 reason=HTTP Error 503: Service Unavailable
+sim-dns-resolver     | [2026-11-25T11:53:52.047693+00:00] dns-resolver SERVE_STALE name=inference.svc.cluster.local ip=10.0.0.42 reason=HTTP Error 503: Service Unavailable
+sim-dns-resolver     | [2026-11-25T11:53:53.552671+00:00] dns-resolver SERVE_STALE name=inference.svc.cluster.local ip=10.0.0.42 reason=HTTP Error 503: Service Unavailable
+sim-dns-resolver     | [2026-11-25T11:53:55.058785+00:00] dns-resolver SERVE_STALE name=inference.svc.cluster.local ip=10.0.0.42 reason=HTTP Error 503: Service Unavailable
+sim-dns-resolver     | [2026-11-25T11:53:56.566818+00:00] dns-resolver SERVE_STALE name=inference.svc.cluster.local ip=10.0.0.42 reason=HTTP Error 503: Service Unavailable
+sim-dns-resolver     | [2026-11-25T11:53:58.075687+00:00] dns-resolver SERVE_STALE name=inference.svc.cluster.local ip=10.0.0.42 reason=HTTP Error 503: Service Unavailable
+sim-dns-resolver     | [2026-11-25T11:53:58.600183+00:00] dns-resolver CACHE_REFRESH name=inference.svc.cluster.local ip=10.0.0.42 ttl=12.0s
+sim-dns-resolver     | [2026-11-25T11:54:13.417098+00:00] dns-resolver CACHE_REFRESH name=inference.svc.cluster.local ip=10.0.0.42 ttl=12.0s
+sim-k8s-api          | [2026-11-25T11:53:32.988618+00:00] k8s-api 503 TIMEOUT_QUEUE path=/telemetry/cluster-metrics
+sim-k8s-api          | [2026-11-25T11:53:32.991583+00:00] k8s-api 503 TIMEOUT_QUEUE path=/telemetry/cluster-metrics
+sim-k8s-api          | [2026-11-25T11:53:37.914586+00:00] k8s-api 503 TIMEOUT_QUEUE path=/telemetry/cluster-metrics
+sim-k8s-api          | [2026-11-25T11:53:37.986774+00:00] k8s-api 503 TIMEOUT_QUEUE path=/telemetry/cluster-metrics
+sim-k8s-api          | [2026-11-25T11:53:39.779175+00:00] k8s-api 503 TIMEOUT_QUEUE path=/telemetry/cluster-metrics
+sim-k8s-api          | [2026-11-25T11:53:42.305602+00:00] k8s-api 503 TIMEOUT_QUEUE path=/telemetry/cluster-metrics
+sim-k8s-api          | [2026-11-25T11:53:42.312811+00:00] k8s-api 503 TIMEOUT_QUEUE path=/telemetry/cluster-metrics
+sim-k8s-api          | [2026-11-25T11:53:44.107171+00:00] k8s-api 503 TIMEOUT_QUEUE path=/telemetry/cluster-metrics
+sim-k8s-api          | [2026-11-25T11:53:44.120526+00:00] k8s-api 503 TIMEOUT_QUEUE path=/telemetry/cluster-metrics
+sim-k8s-api          | [2026-11-25T11:53:45.682224+00:00] k8s-api 503 TIMEOUT_QUEUE path=/telemetry/cluster-metrics
+sim-k8s-api          | [2026-11-25T11:53:46.736825+00:00] k8s-api 503 TIMEOUT_QUEUE path=/telemetry/cluster-metrics
+sim-k8s-api          | [2026-11-25T11:53:48.417125+00:00] k8s-api 503 TIMEOUT_QUEUE path=/telemetry/cluster-metrics
+sim-k8s-api          | [2026-11-25T11:53:48.430771+00:00] k8s-api 503 TIMEOUT_QUEUE path=/telemetry/cluster-metrics
+sim-k8s-api          | [2026-11-25T11:53:49.031526+00:00] k8s-api 503 TIMEOUT_QUEUE path=/endpoints/inference
+sim-k8s-api          | [2026-11-25T11:53:49.938504+00:00] k8s-api 503 TIMEOUT_QUEUE path=/telemetry/cluster-metrics
+sim-k8s-api          | [2026-11-25T11:53:50.283235+00:00] k8s-api 503 TIMEOUT_QUEUE path=/telemetry/cluster-metrics
+sim-k8s-api          | [2026-11-25T11:53:50.539680+00:00] k8s-api 503 TIMEOUT_QUEUE path=/endpoints/inference
+sim-k8s-api          | [2026-11-25T11:53:52.046666+00:00] k8s-api 503 TIMEOUT_QUEUE path=/endpoints/inference
+sim-k8s-api          | [2026-11-25T11:53:52.865938+00:00] k8s-api 503 TIMEOUT_QUEUE path=/telemetry/cluster-metrics
+sim-k8s-api          | [2026-11-25T11:53:53.010551+00:00] k8s-api 503 TIMEOUT_QUEUE path=/telemetry/cluster-metrics
+sim-k8s-api          | [2026-11-25T11:53:53.551766+00:00] k8s-api 503 TIMEOUT_QUEUE path=/endpoints/inference
+sim-k8s-api          | [2026-11-25T11:53:54.797514+00:00] k8s-api 503 TIMEOUT_QUEUE path=/telemetry/cluster-metrics
+sim-k8s-api          | [2026-11-25T11:53:55.057519+00:00] k8s-api 503 TIMEOUT_QUEUE path=/endpoints/inference
+sim-k8s-api          | [2026-11-25T11:53:56.565698+00:00] k8s-api 503 TIMEOUT_QUEUE path=/endpoints/inference
+sim-k8s-api          | [2026-11-25T11:53:56.696109+00:00] k8s-api 503 TIMEOUT_QUEUE path=/telemetry/cluster-metrics
+sim-k8s-api          | [2026-11-25T11:53:57.564155+00:00] k8s-api 503 TIMEOUT_QUEUE path=/telemetry/cluster-metrics
+sim-k8s-api          | [2026-11-25T11:53:58.074825+00:00] k8s-api 503 TIMEOUT_QUEUE path=/endpoints/inference
+sim-workload-client  | [2026-11-25T11:53:21.674564+00:00] t=1.56s req=4 status=200 source=cache ttl_left=10.49s latency_ms=3.4 errors=0
+sim-workload-client  | [2026-11-25T11:53:22.177729+00:00] t=2.06s req=5 status=200 source=cache ttl_left=9.99s latency_ms=2.7 errors=0
+sim-workload-client  | [2026-11-25T11:53:22.680416+00:00] t=2.57s req=6 status=200 source=cache ttl_left=9.49s latency_ms=2.5 errors=0
+sim-workload-client  | [2026-11-25T11:53:23.183571+00:00] t=3.07s req=7 status=200 source=cache ttl_left=8.98s latency_ms=3.0 errors=0
+sim-workload-client  | [2026-11-25T11:53:23.687814+00:00] t=3.57s req=8 status=200 source=cache ttl_left=8.48s latency_ms=4.0 errors=0
+sim-workload-client  | [2026-11-25T11:53:24.190224+00:00] t=4.08s req=9 status=200 source=cache ttl_left=7.98s latency_ms=2.2 errors=0
+sim-workload-client  | [2026-11-25T11:53:24.693383+00:00] t=4.58s req=10 status=200 source=cache ttl_left=7.47s latency_ms=2.9 errors=0
+sim-workload-client  | [2026-11-25T11:53:25.196144+00:00] t=5.08s req=11 status=200 source=cache ttl_left=6.97s latency_ms=2.6 errors=0
+sim-workload-client  | [2026-11-25T11:53:25.701061+00:00] t=5.58s req=12 status=200 source=cache ttl_left=6.47s latency_ms=4.7 errors=0
+sim-workload-client  | [2026-11-25T11:53:26.203400+00:00] t=6.09s req=13 status=200 source=cache ttl_left=5.96s latency_ms=2.1 errors=0
+sim-workload-client  | [2026-11-25T11:53:26.707452+00:00] t=6.59s req=14 status=200 source=cache ttl_left=5.46s latency_ms=3.9 errors=0
+sim-workload-client  | [2026-11-25T11:53:27.209954+00:00] t=7.1s req=15 status=200 source=cache ttl_left=4.96s latency_ms=2.2 errors=0
+sim-workload-client  | [2026-11-25T11:53:27.712907+00:00] t=7.6s req=16 status=200 source=cache ttl_left=4.45s latency_ms=2.7 errors=0
+sim-workload-client  | [2026-11-25T11:53:28.220543+00:00] t=8.1s req=17 status=200 source=cache ttl_left=3.95s latency_ms=7.2 errors=0
+sim-workload-client  | [2026-11-25T11:53:28.722873+00:00] t=8.61s req=18 status=200 source=cache ttl_left=3.44s latency_ms=1.8 errors=0
+sim-workload-client  | [2026-11-25T11:53:29.225188+00:00] t=9.11s req=19 status=200 source=cache ttl_left=2.94s latency_ms=2.2 errors=0
+sim-workload-client  | [2026-11-25T11:53:29.728700+00:00] t=9.61s req=20 status=200 source=cache ttl_left=2.44s latency_ms=3.2 errors=0
+sim-workload-client  | [2026-11-25T11:53:30.230814+00:00] t=10.12s req=21 status=200 source=cache ttl_left=1.94s latency_ms=1.8 errors=0
+sim-workload-client  | [2026-11-25T11:53:30.733532+00:00] t=10.62s req=22 status=200 source=cache ttl_left=1.43s latency_ms=2.5 errors=0
+sim-workload-client  | [2026-11-25T11:53:31.237095+00:00] t=11.12s req=23 status=200 source=cache ttl_left=0.93s latency_ms=3.4 errors=0
+sim-workload-client  | [2026-11-25T11:53:31.738999+00:00] t=11.63s req=24 status=200 source=cache ttl_left=0.43s latency_ms=1.7 errors=0
+sim-workload-client  | [2026-11-25T11:53:33.220165+00:00] t=12.13s req=25 status=200 source=k8s-api ttl_left=12.0s latency_ms=981.0 errors=0
+sim-workload-client  | [2026-11-25T11:52:30.417442+00:00] t=13.61s req=26 status=200 source=cache ttl_left=11.49s latency_ms=3.7 errors=0
+sim-workload-client  | [2026-11-25T11:53:36.962620+00:00] t=14.11s req=27 status=200 source=cache ttl_left=10.99s latency_ms=5.0 errors=0
+sim-workload-client  | [2026-11-25T11:53:37.465846+00:00] t=14.62s req=28 status=200 source=cache ttl_left=10.49s latency_ms=2.9 errors=0
+sim-workload-client  | [2026-11-25T11:53:37.967850+00:00] t=15.12s req=29 status=200 source=cache ttl_left=9.98s latency_ms=1.7 errors=0
+sim-workload-client  | [2026-11-25T11:53:38.470370+00:00] t=15.62s req=30 status=200 source=cache ttl_left=9.48s latency_ms=2.4 errors=0
+sim-workload-client  | [2026-11-25T11:53:38.972244+00:00] t=16.13s req=31 status=200 source=cache ttl_left=8.98s latency_ms=1.7 errors=0
+sim-workload-client  | [2026-11-25T11:53:39.474250+00:00] t=16.63s req=32 status=200 source=cache ttl_left=8.48s latency_ms=1.9 errors=0
+sim-workload-client  | [2026-11-25T11:53:39.977771+00:00] t=17.13s req=33 status=200 source=cache ttl_left=7.97s latency_ms=3.2 errors=0
+sim-workload-client  | [2026-11-25T11:53:40.481146+00:00] t=17.63s req=34 status=200 source=cache ttl_left=7.47s latency_ms=3.0 errors=0
+sim-workload-client  | [2026-11-25T11:53:40.987073+00:00] t=18.14s req=35 status=200 source=cache ttl_left=6.97s latency_ms=5.8 errors=0
+sim-workload-client  | [2026-11-25T11:53:41.488996+00:00] t=18.64s req=36 status=200 source=cache ttl_left=6.46s latency_ms=1.7 errors=0
+sim-workload-client  | [2026-11-25T11:53:41.991097+00:00] t=19.14s req=37 status=200 source=cache ttl_left=5.96s latency_ms=1.9 errors=0
+sim-workload-client  | [2026-11-25T11:53:42.494868+00:00] t=19.65s req=38 status=200 source=cache ttl_left=5.46s latency_ms=3.5 errors=0
+sim-workload-client  | [2026-11-25T11:53:42.998511+00:00] t=20.15s req=39 status=200 source=cache ttl_left=4.95s latency_ms=3.3 errors=0
+sim-workload-client  | [2026-11-25T11:53:43.501287+00:00] t=20.65s req=40 status=200 source=cache ttl_left=4.45s latency_ms=2.4 errors=0
+sim-workload-client  | [2026-11-25T11:53:44.004327+00:00] t=21.16s req=41 status=200 source=cache ttl_left=3.95s latency_ms=2.9 errors=0
+sim-workload-client  | [2026-11-25T11:53:44.506905+00:00] t=21.66s req=42 status=200 source=cache ttl_left=3.45s latency_ms=2.4 errors=0
+sim-workload-client  | [2026-11-25T11:53:45.012456+00:00] t=22.16s req=43 status=200 source=cache ttl_left=2.94s latency_ms=5.4 errors=0
+sim-workload-client  | [2026-11-25T11:53:45.514853+00:00] t=22.67s req=44 status=200 source=cache ttl_left=2.44s latency_ms=2.2 errors=0
+sim-workload-client  | [2026-11-25T11:53:46.016980+00:00] t=23.17s req=45 status=200 source=cache ttl_left=1.94s latency_ms=1.9 errors=0
+sim-workload-client  | [2026-11-25T11:53:46.522661+00:00] t=23.67s req=46 status=200 source=cache ttl_left=1.43s latency_ms=5.3 errors=0
+sim-workload-client  | [2026-11-25T11:53:47.024987+00:00] t=24.18s req=47 status=200 source=cache ttl_left=0.93s latency_ms=1.9 errors=0
+sim-workload-client  | [2026-11-25T11:53:47.528860+00:00] t=24.68s req=48 status=200 source=cache ttl_left=0.42s latency_ms=3.6 errors=0
+sim-workload-client  | [2026-11-25T11:53:49.034885+00:00] t=25.18s req=49 status=200 source=stale-cache ttl_left=0s latency_ms=1005.8 errors=0
+sim-workload-client  | [2026-11-25T11:53:50.541948+00:00] t=26.69s req=50 status=200 source=stale-cache ttl_left=0s latency_ms=1006.7 errors=0
+sim-workload-client  | [2026-11-25T11:53:52.048849+00:00] t=28.2s req=51 status=200 source=stale-cache ttl_left=0s latency_ms=1006.4 errors=0
+sim-workload-client  | [2026-11-25T11:53:53.554466+00:00] t=29.7s req=52 status=200 source=stale-cache ttl_left=0s latency_ms=1005.3 errors=0
+sim-workload-client  | [2026-11-25T11:53:55.060749+00:00] t=31.21s req=53 status=200 source=stale-cache ttl_left=0s latency_ms=1005.9 errors=0
+sim-workload-client  | [2026-11-25T11:53:56.568179+00:00] t=32.72s req=54 status=200 source=stale-cache ttl_left=0s latency_ms=1007.0 errors=0
+sim-workload-client  | [2026-11-25T11:53:58.076738+00:00] t=34.22s req=55 status=200 source=stale-cache ttl_left=0s latency_ms=1008.3 errors=0
+sim-workload-client  | [2026-11-25T11:53:58.601131+00:00] t=35.73s req=56 status=200 source=k8s-api ttl_left=12.0s latency_ms=24.0 errors=0
+sim-workload-client  | [2026-11-25T11:53:59.105292+00:00] t=36.26s req=57 status=200 source=cache ttl_left=11.5s latency_ms=3.7 errors=0
+sim-workload-client  | [2026-11-25T11:53:59.608437+00:00] t=36.76s req=58 status=200 source=cache ttl_left=10.99s latency_ms=2.9 errors=0
+sim-workload-client  | [2026-11-25T11:54:00.110656+00:00] t=37.26s req=59 status=200 source=cache ttl_left=10.49s latency_ms=2.0 errors=0
+sim-workload-client  | [2026-11-25T11:54:00.612489+00:00] t=37.77s req=60 status=200 source=cache ttl_left=9.99s latency_ms=1.7 errors=0
+sim-workload-client  | [2026-11-25T11:54:01.116373+00:00] t=38.27s req=61 status=200 source=cache ttl_left=9.48s latency_ms=3.6 errors=0
+sim-workload-client  | [2026-11-25T11:54:01.619467+00:00] t=38.77s req=62 status=200 source=cache ttl_left=8.98s latency_ms=2.7 errors=0
+sim-workload-client  | [2026-11-25T11:54:02.123820+00:00] t=39.28s req=63 status=200 source=cache ttl_left=8.48s latency_ms=4.1 errors=0
+sim-workload-client  | [2026-11-25T11:54:02.625812+00:00] t=39.78s req=64 status=200 source=cache ttl_left=7.97s latency_ms=1.8 errors=0
+sim-workload-client  | [2026-11-25T11:54:03.130675+00:00] t=40.28s req=65 status=200 source=cache ttl_left=7.47s latency_ms=4.7 errors=0
+sim-workload-client  | [2026-11-25T11:54:03.633719+00:00] t=40.79s req=66 status=200 source=cache ttl_left=6.97s latency_ms=2.8 errors=0
+sim-workload-client  | [2026-11-25T11:54:04.136456+00:00] t=41.29s req=67 status=200 source=cache ttl_left=6.46s latency_ms=2.4 errors=0
+sim-workload-client  | [2026-11-25T11:54:04.639115+00:00] t=41.79s req=68 status=200 source=cache ttl_left=5.96s latency_ms=2.4 errors=0
+sim-workload-client  | [2026-11-25T11:54:05.142211+00:00] t=42.29s req=69 status=200 source=cache ttl_left=5.46s latency_ms=2.8 errors=0
+sim-workload-client  | [2026-11-25T11:54:05.644999+00:00] t=42.8s req=70 status=200 source=cache ttl_left=4.96s latency_ms=2.5 errors=0
+sim-workload-client  | [2026-11-25T11:54:06.149817+00:00] t=43.3s req=71 status=200 source=cache ttl_left=4.45s latency_ms=4.6 errors=0
+sim-workload-client  | [2026-11-25T11:54:09.369336+00:00] t=43.81s req=72 status=200 source=cache ttl_left=3.95s latency_ms=3.1 errors=0
+sim-workload-client  | [2026-11-25T11:54:09.871202+00:00] t=44.31s req=73 status=200 source=cache ttl_left=3.45s latency_ms=1.7 errors=0
+sim-workload-client  | [2026-11-25T11:54:10.374122+00:00] t=44.81s req=74 status=200 source=cache ttl_left=2.94s latency_ms=2.8 errors=0
+sim-workload-client  | [2026-11-25T11:54:10.880960+00:00] t=45.31s req=75 status=200 source=cache ttl_left=2.44s latency_ms=6.4 errors=0
+sim-workload-client  | [2026-11-25T11:54:11.384949+00:00] t=45.82s req=76 status=200 source=cache ttl_left=1.93s latency_ms=3.7 errors=0
+sim-workload-client  | [2026-11-25T11:54:11.886811+00:00] t=46.32s req=77 status=200 source=cache ttl_left=1.43s latency_ms=1.6 errors=0
+sim-workload-client  | [2026-11-25T11:54:12.388713+00:00] t=46.83s req=78 status=200 source=cache ttl_left=0.93s latency_ms=1.8 errors=0
+sim-workload-client  | [2026-11-25T11:54:12.891850+00:00] t=47.33s req=79 status=200 source=cache ttl_left=0.43s latency_ms=2.8 errors=0
+sim-workload-client  | [2026-11-25T11:54:13.417581+00:00] t=47.83s req=80 status=200 source=k8s-api ttl_left=12.0s latency_ms=25.4 errors=0

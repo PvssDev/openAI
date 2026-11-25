@@ -1,0 +1,2 @@
+sim-telemetry-agent  | [2026-11-25T11:53:19.884078+00:00] telemetry-agent waiting warmup=10.0s backoff_jitter=True
+sim-telemetry-agent  | [2026-11-25T11:53:29.884410+00:00] telemetry-agent STARTING flood concurrency=10 target=http://k8s-api:8000/telemetry/cluster-metrics backoff_jitter=True

@@ -1,0 +1,13 @@
+sim-dns-resolver  | [2026-11-25T11:52:15.429135+00:00] dns-resolver started port=8053 ttl=12.0s serve_stale=False
+sim-dns-resolver  | [2026-11-25T11:52:15.609365+00:00] dns-resolver CACHE_REFRESH name=inference.svc.cluster.local ip=10.0.0.42 ttl=12.0s
+sim-dns-resolver  | [2026-11-25T11:52:28.712669+00:00] dns-resolver SERVFAIL name=inference.svc.cluster.local reason=HTTP Error 503: Service Unavailable
+sim-dns-resolver  | [2026-11-25T11:52:29.972867+00:00] dns-resolver CACHE_REFRESH name=inference.svc.cluster.local ip=10.0.0.42 ttl=12.0s
+sim-dns-resolver  | [2026-11-25T11:52:43.794607+00:00] dns-resolver SERVFAIL name=inference.svc.cluster.local reason=HTTP Error 503: Service Unavailable
+sim-dns-resolver  | [2026-11-25T11:52:45.302481+00:00] dns-resolver SERVFAIL name=inference.svc.cluster.local reason=HTTP Error 503: Service Unavailable
+sim-dns-resolver  | [2026-11-25T11:52:46.809642+00:00] dns-resolver SERVFAIL name=inference.svc.cluster.local reason=HTTP Error 503: Service Unavailable
+sim-dns-resolver  | [2026-11-25T11:52:48.318676+00:00] dns-resolver SERVFAIL name=inference.svc.cluster.local reason=HTTP Error 503: Service Unavailable
+sim-dns-resolver  | [2026-11-25T11:52:49.825009+00:00] dns-resolver SERVFAIL name=inference.svc.cluster.local reason=HTTP Error 503: Service Unavailable
+sim-dns-resolver  | [2026-11-25T11:52:51.332034+00:00] dns-resolver SERVFAIL name=inference.svc.cluster.local reason=HTTP Error 503: Service Unavailable
+sim-dns-resolver  | [2026-11-25T11:52:52.839906+00:00] dns-resolver SERVFAIL name=inference.svc.cluster.local reason=HTTP Error 503: Service Unavailable
+sim-dns-resolver  | [2026-11-25T11:52:53.366941+00:00] dns-resolver CACHE_REFRESH name=inference.svc.cluster.local ip=10.0.0.42 ttl=12.0s
+sim-dns-resolver  | [2026-11-25T11:53:06.035025+00:00] dns-resolver CACHE_REFRESH name=inference.svc.cluster.local ip=10.0.0.42 ttl=12.0s

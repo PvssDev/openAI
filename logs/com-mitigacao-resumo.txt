@@ -1,0 +1,12 @@
+prefix=com-mitigacao
+total_requests=82
+error_requests=0
+error_rate_pct=0.0
+flood_start_ts=2026-11-25T11:53:29.884410+00:00
+first_error_ts=None
+first_error_req=None
+time_to_failure_s=None
+rollback_ts=2026-11-25T11:53:55.619235+00:00
+first_recovery_ts=None
+first_recovery_req=None
+time_to_recovery_s=None

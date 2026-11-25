@@ -1,0 +1,12 @@
+prefix=sem-mitigacao
+total_requests=85
+error_requests=8
+error_rate_pct=9.41
+flood_start_ts=2026-11-25T11:52:25.276231+00:00
+first_error_ts=2026-11-25T11:52:28.714335+00:00
+first_error_req=25
+time_to_failure_s=3.44
+rollback_ts=2026-11-25T11:52:50.850215+00:00
+first_recovery_ts=2026-11-25T11:52:53.368441+00:00
+first_recovery_req=57
+time_to_recovery_s=2.52

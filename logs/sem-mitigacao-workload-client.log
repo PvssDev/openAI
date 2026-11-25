@@ -1,0 +1,86 @@
+sim-workload-client  | [2026-11-25T11:52:15.536413+00:00] workload-client started dns_url=http://dns-resolver:8053/resolve?name=inference.svc.cluster.local interval=0.5s
+sim-workload-client  | [2026-11-25T11:52:15.610093+00:00] t=0.0s req=1 status=200 source=k8s-api ttl_left=12.0s latency_ms=73.3 errors=0
+sim-workload-client  | [2026-11-25T11:52:16.115711+00:00] t=0.57s req=2 status=200 source=cache ttl_left=11.49s latency_ms=5.0 errors=0
+sim-workload-client  | [2026-11-25T11:52:16.619172+00:00] t=1.08s req=3 status=200 source=cache ttl_left=10.99s latency_ms=3.3 errors=0
+sim-workload-client  | [2026-11-25T11:52:17.123462+00:00] t=1.58s req=4 status=200 source=cache ttl_left=10.49s latency_ms=3.9 errors=0
+sim-workload-client  | [2026-11-25T11:52:17.629008+00:00] t=2.09s req=5 status=200 source=cache ttl_left=9.98s latency_ms=5.1 errors=0
+sim-workload-client  | [2026-11-25T11:52:18.131585+00:00] t=2.59s req=6 status=200 source=cache ttl_left=9.48s latency_ms=2.4 errors=0
+sim-workload-client  | [2026-11-25T11:52:18.634379+00:00] t=3.1s req=7 status=200 source=cache ttl_left=8.98s latency_ms=2.4 errors=0
+sim-workload-client  | [2026-11-25T11:52:19.139024+00:00] t=3.6s req=8 status=200 source=cache ttl_left=8.47s latency_ms=4.3 errors=0
+sim-workload-client  | [2026-11-25T11:52:19.642654+00:00] t=4.1s req=9 status=200 source=cache ttl_left=7.97s latency_ms=3.3 errors=0
+sim-workload-client  | [2026-11-25T11:52:20.147023+00:00] t=4.61s req=10 status=200 source=cache ttl_left=7.46s latency_ms=4.1 errors=0
+sim-workload-client  | [2026-11-25T11:52:20.650780+00:00] t=5.11s req=11 status=200 source=cache ttl_left=6.96s latency_ms=3.3 errors=0
+sim-workload-client  | [2026-11-25T11:52:21.157224+00:00] t=5.62s req=12 status=200 source=cache ttl_left=6.45s latency_ms=5.7 errors=0
+sim-workload-client  | [2026-11-25T11:52:21.660767+00:00] t=6.12s req=13 status=200 source=cache ttl_left=5.95s latency_ms=3.3 errors=0
+sim-workload-client  | [2026-11-25T11:52:22.163109+00:00] t=6.62s req=14 status=200 source=cache ttl_left=5.45s latency_ms=1.9 errors=0
+sim-workload-client  | [2026-11-25T11:52:22.667892+00:00] t=7.13s req=15 status=200 source=cache ttl_left=4.94s latency_ms=4.4 errors=0
+sim-workload-client  | [2026-11-25T11:52:23.171419+00:00] t=7.63s req=16 status=200 source=cache ttl_left=4.44s latency_ms=3.1 errors=0
+sim-workload-client  | [2026-11-25T11:52:23.677228+00:00] t=8.14s req=17 status=200 source=cache ttl_left=3.93s latency_ms=5.5 errors=0
+sim-workload-client  | [2026-11-25T11:52:24.181645+00:00] t=8.64s req=18 status=200 source=cache ttl_left=3.43s latency_ms=4.0 errors=0
+sim-workload-client  | [2026-11-25T11:52:24.688223+00:00] t=9.15s req=19 status=200 source=cache ttl_left=2.92s latency_ms=6.1 errors=0
+sim-workload-client  | [2026-11-25T11:52:25.194258+00:00] t=9.65s req=20 status=200 source=cache ttl_left=2.42s latency_ms=5.7 errors=0
+sim-workload-client  | [2026-11-25T11:52:25.697931+00:00] t=10.16s req=21 status=200 source=cache ttl_left=1.91s latency_ms=3.3 errors=0
+sim-workload-client  | [2026-11-25T11:52:26.200051+00:00] t=10.66s req=22 status=200 source=cache ttl_left=1.41s latency_ms=1.9 errors=0
+sim-workload-client  | [2026-11-25T11:52:26.704356+00:00] t=11.16s req=23 status=200 source=cache ttl_left=0.91s latency_ms=4.1 errors=0
+sim-workload-client  | [2026-11-25T11:52:27.207054+00:00] t=11.67s req=24 status=200 source=cache ttl_left=0.4s latency_ms=2.5 errors=0
+sim-workload-client  | [2026-11-25T11:52:28.714335+00:00] t=12.17s req=25 status=503 source=error latency_ms=1007.1 errors=1
+sim-workload-client  | [2026-11-25T11:52:29.973503+00:00] t=13.68s req=26 status=200 source=k8s-api ttl_left=12.0s latency_ms=758.6 errors=1
+sim-workload-client  | [2026-11-25T11:52:30.476823+00:00] t=14.94s req=27 status=200 source=cache ttl_left=11.5s latency_ms=3.1 errors=1
+sim-workload-client  | [2026-11-25T11:52:30.980782+00:00] t=15.44s req=28 status=200 source=cache ttl_left=10.99s latency_ms=3.7 errors=1
+sim-workload-client  | [2026-11-25T11:52:31.484685+00:00] t=15.94s req=29 status=200 source=cache ttl_left=10.49s latency_ms=3.6 errors=1
+sim-workload-client  | [2026-11-25T11:52:31.986958+00:00] t=16.45s req=30 status=200 source=cache ttl_left=9.99s latency_ms=2.1 errors=1
+sim-workload-client  | [2026-11-25T11:52:33.216459+00:00] t=16.95s req=31 status=200 source=cache ttl_left=9.48s latency_ms=3.0 errors=1
+sim-workload-client  | [2026-11-25T11:52:33.718674+00:00] t=17.45s req=32 status=200 source=cache ttl_left=8.98s latency_ms=2.0 errors=1
+sim-workload-client  | [2026-11-25T11:52:34.220640+00:00] t=17.96s req=33 status=200 source=cache ttl_left=8.48s latency_ms=1.7 errors=1
+sim-workload-client  | [2026-11-25T11:52:34.723369+00:00] t=18.46s req=34 status=200 source=cache ttl_left=7.98s latency_ms=2.3 errors=1
+sim-workload-client  | [2026-11-25T11:52:35.227493+00:00] t=18.96s req=35 status=200 source=cache ttl_left=7.47s latency_ms=3.9 errors=1
+sim-workload-client  | [2026-11-25T11:52:35.730153+00:00] t=19.47s req=36 status=200 source=cache ttl_left=6.97s latency_ms=2.4 errors=1
+sim-workload-client  | [2026-11-25T11:52:36.233574+00:00] t=19.97s req=37 status=200 source=cache ttl_left=6.47s latency_ms=3.2 errors=1
+sim-workload-client  | [2026-11-25T11:52:36.735814+00:00] t=20.47s req=38 status=200 source=cache ttl_left=5.96s latency_ms=2.0 errors=1
+sim-workload-client  | [2026-11-25T11:52:37.239528+00:00] t=20.97s req=39 status=200 source=cache ttl_left=5.46s latency_ms=3.3 errors=1
+sim-workload-client  | [2026-11-25T11:52:37.743385+00:00] t=21.48s req=40 status=200 source=cache ttl_left=4.96s latency_ms=3.6 errors=1
+sim-workload-client  | [2026-11-25T11:52:38.247375+00:00] t=21.98s req=41 status=200 source=cache ttl_left=4.45s latency_ms=3.5 errors=1
+sim-workload-client  | [2026-11-25T11:52:38.750447+00:00] t=22.49s req=42 status=200 source=cache ttl_left=3.95s latency_ms=2.7 errors=1
+sim-workload-client  | [2026-11-25T11:52:39.255971+00:00] t=22.99s req=43 status=200 source=cache ttl_left=3.44s latency_ms=5.0 errors=1
+sim-workload-client  | [2026-11-25T11:52:39.759939+00:00] t=23.49s req=44 status=200 source=cache ttl_left=2.94s latency_ms=3.5 errors=1
+sim-workload-client  | [2026-11-25T11:52:40.263912+00:00] t=24.0s req=45 status=200 source=cache ttl_left=2.44s latency_ms=3.6 errors=1
+sim-workload-client  | [2026-11-25T11:52:40.770527+00:00] t=24.5s req=46 status=200 source=cache ttl_left=1.93s latency_ms=6.2 errors=1
+sim-workload-client  | [2026-11-25T11:52:41.276091+00:00] t=25.01s req=47 status=200 source=cache ttl_left=1.42s latency_ms=5.3 errors=1
+sim-workload-client  | [2026-11-25T11:52:41.778440+00:00] t=25.51s req=48 status=200 source=cache ttl_left=0.92s latency_ms=2.1 errors=1
+sim-workload-client  | [2026-11-25T11:52:42.284044+00:00] t=26.02s req=49 status=200 source=cache ttl_left=0.42s latency_ms=5.0 errors=1
+sim-workload-client  | [2026-11-25T11:52:43.795678+00:00] t=26.52s req=50 status=503 source=error latency_ms=1011.2 errors=2
+sim-workload-client  | [2026-11-25T11:52:45.303374+00:00] t=28.03s req=51 status=503 source=error latency_ms=1007.0 errors=3
+sim-workload-client  | [2026-11-25T11:52:46.810705+00:00] t=29.54s req=52 status=503 source=error latency_ms=1007.0 errors=4
+sim-workload-client  | [2026-11-25T11:52:48.319786+00:00] t=31.05s req=53 status=503 source=error latency_ms=1008.2 errors=5
+sim-workload-client  | [2026-11-25T11:52:49.826159+00:00] t=32.56s req=54 status=503 source=error latency_ms=1005.8 errors=6
+sim-workload-client  | [2026-11-25T11:52:51.332935+00:00] t=34.06s req=55 status=503 source=error latency_ms=1006.0 errors=7
+sim-workload-client  | [2026-11-25T11:52:52.840743+00:00] t=35.57s req=56 status=503 source=error latency_ms=1007.2 errors=8
+sim-workload-client  | [2026-11-25T11:52:53.368441+00:00] t=37.08s req=57 status=200 source=k8s-api ttl_left=12.0s latency_ms=27.0 errors=8
+sim-workload-client  | [2026-11-25T11:52:53.873620+00:00] t=37.61s req=58 status=200 source=cache ttl_left=11.49s latency_ms=4.5 errors=8
+sim-workload-client  | [2026-11-25T11:52:54.378343+00:00] t=38.11s req=59 status=200 source=cache ttl_left=10.99s latency_ms=4.4 errors=8
+sim-workload-client  | [2026-11-25T11:52:54.881042+00:00] t=38.62s req=60 status=200 source=cache ttl_left=10.49s latency_ms=2.4 errors=8
+sim-workload-client  | [2026-11-25T11:52:55.386736+00:00] t=39.12s req=61 status=200 source=cache ttl_left=9.98s latency_ms=5.1 errors=8
+sim-workload-client  | [2026-11-25T11:52:55.891640+00:00] t=39.62s req=62 status=200 source=cache ttl_left=9.48s latency_ms=4.5 errors=8
+sim-workload-client  | [2026-11-25T11:52:56.393835+00:00] t=40.13s req=63 status=200 source=cache ttl_left=8.97s latency_ms=1.8 errors=8
+sim-workload-client  | [2026-11-25T11:52:56.899475+00:00] t=40.63s req=64 status=200 source=cache ttl_left=8.47s latency_ms=5.2 errors=8
+sim-workload-client  | [2026-11-25T11:52:57.401627+00:00] t=41.14s req=65 status=200 source=cache ttl_left=7.97s latency_ms=1.9 errors=8
+sim-workload-client  | [2026-11-25T11:52:57.906791+00:00] t=41.64s req=66 status=200 source=cache ttl_left=7.46s latency_ms=4.9 errors=8
+sim-workload-client  | [2026-11-25T11:52:58.410177+00:00] t=42.14s req=67 status=200 source=cache ttl_left=6.96s latency_ms=3.0 errors=8
+sim-workload-client  | [2026-11-25T11:52:58.913559+00:00] t=42.65s req=68 status=200 source=cache ttl_left=6.45s latency_ms=3.0 errors=8
+sim-workload-client  | [2026-11-25T11:52:59.416939+00:00] t=43.15s req=69 status=200 source=cache ttl_left=5.95s latency_ms=3.2 errors=8
+sim-workload-client  | [2026-11-25T11:52:59.919527+00:00] t=43.65s req=70 status=200 source=cache ttl_left=5.45s latency_ms=2.4 errors=8
+sim-workload-client  | [2026-11-25T11:53:00.422855+00:00] t=44.16s req=71 status=200 source=cache ttl_left=4.94s latency_ms=3.1 errors=8
+sim-workload-client  | [2026-11-25T11:53:00.926813+00:00] t=44.66s req=72 status=200 source=cache ttl_left=4.44s latency_ms=3.7 errors=8
+sim-workload-client  | [2026-11-25T11:53:01.429560+00:00] t=45.16s req=73 status=200 source=cache ttl_left=3.94s latency_ms=2.5 errors=8
+sim-workload-client  | [2026-11-25T11:53:01.933059+00:00] t=45.67s req=74 status=200 source=cache ttl_left=3.43s latency_ms=3.3 errors=8
+sim-workload-client  | [2026-11-25T11:53:02.436223+00:00] t=46.17s req=75 status=200 source=cache ttl_left=2.93s latency_ms=2.9 errors=8
+sim-workload-client  | [2026-11-25T11:53:02.941918+00:00] t=46.67s req=76 status=200 source=cache ttl_left=2.43s latency_ms=5.4 errors=8
+sim-workload-client  | [2026-11-25T11:53:03.995269+00:00] t=47.18s req=77 status=200 source=cache ttl_left=1.92s latency_ms=4.9 errors=8
+sim-workload-client  | [2026-11-25T11:53:04.497936+00:00] t=47.68s req=78 status=200 source=cache ttl_left=1.42s latency_ms=2.3 errors=8
+sim-workload-client  | [2026-11-25T11:53:05.002956+00:00] t=48.19s req=79 status=200 source=cache ttl_left=0.91s latency_ms=4.6 errors=8
+sim-workload-client  | [2026-11-25T11:53:05.506863+00:00] t=48.69s req=80 status=200 source=cache ttl_left=0.41s latency_ms=3.7 errors=8
+sim-workload-client  | [2026-11-25T11:53:06.035461+00:00] t=49.2s req=81 status=200 source=k8s-api ttl_left=12.0s latency_ms=28.3 errors=8
+sim-workload-client  | [2026-11-25T11:53:06.537410+00:00] t=49.72s req=82 status=200 source=cache ttl_left=11.5s latency_ms=1.8 errors=8
+sim-workload-client  | [2026-11-25T11:53:07.040469+00:00] t=50.23s req=83 status=200 source=cache ttl_left=11.0s latency_ms=2.8 errors=8
+sim-workload-client  | [2026-11-25T11:53:07.543820+00:00] t=50.73s req=84 status=200 source=cache ttl_left=10.49s latency_ms=3.2 errors=8
+sim-workload-client  | [2026-11-25T11:53:08.047031+00:00] t=51.23s req=85 status=200 source=cache ttl_left=9.99s latency_ms=3.0 errors=8
