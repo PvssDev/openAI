@@ -4,3 +4,7 @@ docs/local/
 # Configurações locais de agentes
 .agents/
 
+# Cache do Python
+__pycache__/
+*.pyc
+
