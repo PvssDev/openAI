@@ -13,6 +13,24 @@ def ts() -> str:
     return datetime.now(timezone.utc).isoformat()
 
 
+def container_ts(compose_cmd: list[str]) -> str:
+    res = run_cmd(
+        compose_cmd
+        + [
+            "exec",
+            "-T",
+            "k8s-api",
+            "python",
+            "-c",
+            "from datetime import datetime, timezone; print(datetime.now(timezone.utc).isoformat())",
+        ],
+        capture=True,
+    )
+    if res.returncode == 0 and res.stdout.strip():
+        return res.stdout.strip().splitlines()[-1].strip()
+    return ts()
+
+
 def run_cmd(cmd: list[str], capture: bool = False) -> subprocess.CompletedProcess:
     return subprocess.run(cmd, cwd=ROOT, text=True, capture_output=capture, check=False)
 
@@ -112,7 +130,7 @@ def main():
         print(f"[{ts()}] Aguardando {failure_window_s}s (warmup + mascaramento por cache + janela de carga)...")
         time.sleep(failure_window_s)
 
-        rollback_ts = ts()
+        rollback_ts = container_ts(compose_cmd)
         print(f"[{rollback_ts}] Executando rollback simulado: stop telemetry-agent")
         run_cmd(compose_cmd + ["stop", "telemetry-agent"])
 
