@@ -26,7 +26,7 @@ Este arquivo registra os principais prompts usados pela equipe com a IA durante 
 
 ### 4. Simplificação da linguagem do laudo e implementação da mitigação (Entrega 4)
 - **Prompt resumido:** Pedimos para reescrever os textos com linguagem simples e direta de estudante (sem jargões desnecessários) e implementar a mitigação da Entrega 4 testando localmente.
-- **O que foi aceito:** A simplificação de termos pesados no laudo e no `README.md`, além da criação de `docker-compose.mitigado.yml` com `SERVE_STALE=true` no `dns-resolver` e `BACKOFF_JITTER=true` no `telemetry-agent`.
+- **O que foi aceito:** A correção do texto que estava com linguagem robusta demais (deixando o laudo e o `README.md` mais diretos e fáceis de ler), além da criação de `docker-compose.mitigado.yml` com `SERVE_STALE=true` no `dns-resolver` e `BACKOFF_JITTER=true` no `telemetry-agent`.
 - **O que foi mudado:** Os campos de métricas reais (Parte C e tabela Antes × Depois da Parte D) e o trecho do projeto da equipe foram mantidos como marcadores `[PREENCHER]` até a execução final no Docker Compose, garantindo que nenhum número seja inventado.
 - **O que foi descartado:** Expressões excessivamente técnicas como "não linearidade de clusters massivos", "contenção em disco" e "tempestades de retry".
 
@@ -44,5 +44,11 @@ Este arquivo registra os principais prompts usados pela equipe com a IA durante 
 - **Onde aconteceu:** `tests/test_miniatura.py` (na primeira versão gerada pela IA).
 - **Como foi descoberto:** Na mesma execução do teste automatizado no Windows, o processo `k8s-api` produziu centenas de linhas de `503 OVERLOADED` em poucos segundos e travou sem responder mesmo depois de encerrar o `telemetry-agent`.
 - **Causa do erro:** A IA abriu os subprocessos no teste com `stdout=subprocess.PIPE`, mas não consumia a saída do pipe em nenhuma thread. No Windows, o buffer do pipe é pequeno (4 KB); quando encheu, o `k8s-api` bloqueou na escrita de `stdout`.
-- **Correção feita:** Trocamos o redirecionamento nos subprocessos do teste para `stdout=subprocess.DEVNULL` e `stderr=subprocess.DEVNULL`. Após as duas correções, o teste passou em `6.215s` (e a suíte completa com o teste da mitigação passou em `15.917s`, `OK`).
+- **Correção feita:** Trocamos o redirecionamento nos subprocessos do teste para `stdout=subprocess.DEVNULL` e `stderr=subprocess.DEVNULL`. Após as duas correções, o teste passou em `6.215s` (e a suíte completa com o teste da mitigação passou em `9.414s`, `OK`).
+
+### Erro 3 — Cálculo errado do tempo de recuperação por diferença de relógio entre Windows e Docker
+- **Onde aconteceu:** `scripts/run_experiment.py` (ao rodar o experimento real no Docker Desktop no Windows).
+- **Como foi descoberto:** Na primeira execução de `python scripts/run_experiment.py sem-mitigacao`, o resumo mostrou `time_to_recovery_s=68.33` mesmo com o container voltando a responder em poucos segundos, e o horário `rollback_ts` (`11:49:42`) apareceu anterior ao `flood_start_ts` (`11:50:22`).
+- **Causa do erro:** A IA pegou o horário do rollback usando `datetime.now()` do Windows, enquanto os logs dos serviços usavam o relógio interno da máquina virtual Linux do Docker (WSL2), que estava ~66 segundos adiantado.
+- **Correção feita:** Adicionamos a função `container_ts()` em `scripts/run_experiment.py`, que lê o horário direto de dentro do container `k8s-api` (`docker compose exec -T k8s-api ...`) no momento do rollback. Depois da correção, o tempo de recuperação ficou coerente com os logs (`2,52s`).
 
